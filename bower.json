@@ -1,0 +1,24 @@
+{
+  "name": "angular",
+  "description": "demo angular",
+  "main": "index.js",
+  "authors": [
+    "ricardo.horigome"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ricardohorigome/angular",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bower": "*",
+    "install": "^1.0.4",
+    "angular": "1.6.1",
+    "bootstrap": "^3.3.7"
+  }
+}
