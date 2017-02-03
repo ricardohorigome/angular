@@ -60,4 +60,5 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
 
 	carregarContatos();
 	carregarOperadoras();
+		
 });

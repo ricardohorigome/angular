@@ -13,11 +13,19 @@
 		<script src="js/services/serialGeneratorService.js" type="text/javascript"></script>
 		<script src="js/config/serialGeneratorConfig.js" type="text/javascript"></script>
 
+		<script src="js/filters/nameFilter.js" type="text/javascript"></script>
+		<script src="js/filters/elipsisFilter.js" type="text/javascript"></script>
+
 		<script src="js/value/configValue.js" type="text/javascript"></script>
+
+		<script src="js/directives/uiAlertDirective.js" type="text/javascript"></script>
+		<script src="js/directives/uiDateDirective.js" type="text/javascript"></script>
+		<script src="js/directives/uiAccordionDirective.js" type="text/javascript"></script>
 
 
 		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/app.css">
+		<link rel="stylesheet" type="text/css" href="css/ui.css">
 		
 		
 	</head>
@@ -26,7 +34,15 @@
 		<div class="jumbotron">
 			<h4 ng-bind="app"></h4>
 			<input type="text" ng-model="criterioDeBusca" class="form-control" placeholder="O que você está buscando?"></input>
-			{{message}}
+					
+			<input type="text" ng-model="error"></input>
+			<ui-alert title="Ops, aconteceu um problema!" >{{message}}</ui-alert>						
+			
+			<ui-accordions>
+				<ui-accordion title="titulo 1">bla</ui-accordion>
+				<ui-accordion title="titulo 2">bbubu</ui-accordion>
+			</ui-accordions>
+			
 			<table class="table table-striped">	
 				<tr>
 					<th></th>
@@ -42,8 +58,8 @@
 				<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: {nome: criterioDeBusca} | orderBy: criterioDeOrdenacao:direcaoOrdenacao">
 					<!-- order by, true é reverse para mudar a ordem ou orderBy: '-nome'-->
 					<td><input type="checkbox" ng-model="contato.selecionado"></input> </td>
-					<td>{{contato.serial}}</td>
-					<td>{{contato.nome | limitTo:15}}</td>
+					<td>{{contato.serial | limitTo:10 }}</td>
+					<td>{{contato.nome | name | elipsis:5 }}</td>
 					<td>{{contato.telefone}}</td>
 					<td>{{contato.operadora.nome}}</td>
 					<!--
@@ -56,9 +72,11 @@
 			<form name="contatoForm">
 				<input class="form-control" type="text" name="nome" ng-model="contato.nome" placeholder="Nome" ng-required="true" ng-minlength="5"/>
 				<input class="form-control" type="text" name="telefone" ng-model="contato.telefone" placeholder="Telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/"/>
+				{{contato.data}}
+				<input class="form-control" type="text" ng-model="contato.data" name="data" placeholder="Data" ui-date/>
 				<select ng-model="contato.operadora" ng-options="operadora.nome +' ( '+(operadora.preco | currency)+' ) ' group by operadora.categoria for operadora in operadoras | orderBy: 'nome' " class="form-control">
 					<option value="">selecione uma operadora</option>
-				</select>
+				</select>				
 			</form>
 
 			<div ng-messages="contatoForm.nome.$error" class="alert alert-danger">

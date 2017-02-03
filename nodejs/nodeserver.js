@@ -16,9 +16,9 @@ var serverport = 8180;
 // Add headers
 
 var contatos = [
-					{nome: "Pedro", telefone: "9998885566", operadora: {nome: "VIVO", codigo: 99, categoria: "Celular"},cor: "red", data: new Date()},
-					{nome: "Maria", telefone: "9998885555", operadora: {nome: "TIM", codigo: 15, categoria: "Celular"}, cor: "blue", data: new Date()},
-					{nome: "Juliana", telefone: "9998885544", operadora: {nome: "OI", codigo: 14, categoria: "Celular"}, cor: "green", data: new Date()}					
+					{nome: "Pedro", telefone: "9998885566", data: 1483236000000, operadora: {nome: "VIVO", codigo: 99, categoria: "Celular"},cor: "red"},
+					{nome: "Maria", telefone: "9998885555", data: 1483236000000, operadora: {nome: "TIM", codigo: 15, categoria: "Celular"}, cor: "blue"},
+					{nome: "Juliana", telefone: "9998885544", data: 1483236000000, operadora: {nome: "OI", codigo: 14, categoria: "Celular"}, cor: "green"}					
 				];
 var operadoras = [
 		{nome: "OI", codigo: 14, categoria: "Celular", preco: 1},

@@ -1,19 +1,19 @@
-angular.module("listaTelefonica").provider("serialGenerator", function(){
+angular.module("listaTelefonica").provider("serialGenerator", function(config){
+	console.log(config);
+	var _length = 20;
+	
+	this.getLength = function(){
+		return _length;
+	}
+
+	this.setLength = function(length){
+		_length = length;
+	}
 	this.$get = function(){
-		var _lenght = 20;
-		
-		this.getLength = function(){
-			return _length;
-		}
-
-		this.setLength = function(length){
-			_length = length;
-		}
-
 		return {
-			generate: function(){
+			generate: function (){
 				var serial = "";
-				while(serial.length < _lenght){
+				while(serial.length < _length){
 					serial += String.fromCharCode(Math.floor(Math.random()*64) + 32);
 				}
 				return serial;
